@@ -1,0 +1,15 @@
+{
+  "manifest_version": 3,
+  "name": "Meine Formular-Erweiterung",
+  "version": "1.0",
+  "permissions": [
+    "activeTab",
+    "storage"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["http://example.com/*"], // Hier die URL der Website eintragen, auf der das Formular erscheint
+      "js": ["contentScript.js"]
+    }
+  ]
+}
