@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', async function() {
     /*
     Schritt 1: Es wird gesagt, was zu tun ist
 
@@ -114,14 +114,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Schritt 3
-    // store the values in a json file
-    // make last input active
-    let lastField = formFields[formFields.length - 1];
-    lastField.focus();
-
-    let form = document.querySelector('form');
-    form.addEventListener('submit', function(event) {
-        
-    });
+    // if every input is filled, submit the form
+    let submitButton = document.querySelector('input[type="submit"]');
+    submitButton.click();
 });
