@@ -53,21 +53,96 @@ document.addEventListener('DOMContentLoaded', function() {
     // durch jedes feld iterieren. Es soll der Titel des Feldes per text to speech ausgegeben werden, ob es required ist und welchen input typ es hat
     // dann muss der Input gefüllt werden
     let formFields = document.querySelectorAll('input');
-    formFields.forEach(function(field) {
+    formFields.forEach(async function(field) {
         // get Inhalt vom dazugehörigen label
         let fieldText = field.previousElementSibling.textContent;
         // get required
         let required = field.required;
         // get input type
         let type = field.type;
+        switch (type) {
+            case 'text':
+                type = 'Text';
+                break;
+            case 'email':
+                type = 'Email';
+                break;
+            case 'number':
+                type = 'Nummer';
+                break;
+            case 'date':
+                type = 'Datum';
+                break;
+            case 'password':
+                type = 'Passwort';
+                break;
+            case 'tel':
+                type = 'Telefonnummer';
+                break;
+            case 'checkbox':
+                type = 'Checkbox';
+                break;
+            case 'radio':
+                type = 'Radio';
+                break;
+            case 'file':
+                type = 'Datei';
+                break;
+            case 'submit':
+                type = 'Absenden';
+                break;
+            case 'reset':
+                type = 'Zurücksetzen';
+                break;
+            case 'button':
+                type = 'Knopf';
+                break;
+            case 'hidden':
+                type = 'Versteckt';
+                break;
+            case 'image':
+                type = 'Bild';
+                break;
+            case 'color':
+                type = 'Farbe';
+                break;
+            case 'range':
+                type = 'Bereich';
+                break;
+            case 'search':
+                type = 'Suche';
+                break;
+            case 'url':
+                type = 'URL';
+                break;
+            case 'month':
+                type = 'Monat';
+                break;
+            case 'week':
+                type = 'Woche';
+                break;
+            case 'time':
+                type = 'Zeit';
+                break;
+            case 'datetime-local':
+                type = 'Datum und Zeit';
+                break;
+            default:
+                type = 'Unbekannt';
+        }
         // get audio
-        textToSpeech = fieldText + "einsprechen. Dieses Feld ist ";
+        textToSpeech = fieldText + " einsprechen. Dieses Feld ist ";
         if (required) {
             textToSpeech += "obligatorisch. ";
         } else {
             textToSpeech += "optional. Wenn Sie dieses Feld nicht ausfüllen wollen, drücken Sie Enter.";
         }
+        textToSpeech += "Der Input-Typ ist " + type + ".";
 
-        getAudio(fieldText);
+        getAudio(textToSpeech).then(() => {
+            // get response
+            let response = getTextFromVoice();
+            field.value = response;
+        });
     });
 });
