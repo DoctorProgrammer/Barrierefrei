@@ -4,12 +4,12 @@
   "version": "1.0",
   "permissions": ["tabs", "<all_urls>"],
   "background": {
-      "scripts": ["background.js"]
+      "scripts": ["./scripts/background.js"]
   },
   "content_scripts": [
       {
           "matches": ["<all_urls>"],
-          "js": ["content.js"]
+          "js": ["./scripts/insertSavedDataIntoForms.js"]
       }
   ]
 }
