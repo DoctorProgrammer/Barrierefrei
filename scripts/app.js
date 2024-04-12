@@ -114,7 +114,22 @@ document.addEventListener('DOMContentLoaded', async function() {
         }
     });
 
-    // if every input is filled, submit the form
-    let submitButton = document.querySelector('input[type="submit"]');
-    submitButton.click();
+    let lastField = formFields[formFields.length - 1];
+    lastField.addEventListener('change', function() {
+        document.querySelector('form').submit();
+    });
+
+    // Schritt 3
+    // Daten speichern
+    let form = document.querySelector('form');
+    form.addEventListener('submit', async function(event) {
+        event.preventDefault();
+        // for each formFields input, get the value and store it in an object and then put it in the local storage
+        let formData = {};
+        formFields.forEach(function(field) {
+            formData[field.name] = field.value;
+        });
+        localStorage.setItem('formData', JSON.stringify(formData));
+        console.log(formData);
+    });
 });
