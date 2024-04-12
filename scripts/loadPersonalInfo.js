@@ -10,12 +10,12 @@ function loadPersonalInfo() {
             // Die JSON-Daten in ein JavaScript-Objekt umwandeln
             var personalInfo = JSON.parse(personalInfoJSON);
 
-            // Die Daten in das html-Dokument einfügen
+            // Die Daten in das Ausgabediv einfügen
             var outputDiv = document.getElementById("output");
             outputDiv.innerHTML = ""; // Leeren Sie das Ausgabe-Div zuerst
-            outputDiv.innerHTML = "<p>Vorname: " + personalInfo.firstName + "</p>" +
-                "<p>Nachname: " + personalInfo.lastName + "</p>"+
-                "<p>Email: " + personalInfo.email + "</p>"; // Stellen Sie sicher, dass email korrekt abgerufen wird
+            for (var key in personalInfo) {
+                outputDiv.innerHTML += "<p>" + key + ": " + personalInfo[key] + "</p>";
+            }
         } else {
             console.error('Keine gespeicherten Daten gefunden.');
         }
@@ -23,7 +23,6 @@ function loadPersonalInfo() {
         console.error('Ihr Browser unterstützt kein localStorage.');
     }
 }
-
 
 // Die Funktion zum Laden der gespeicherten Daten aufrufen, wenn die Seite geladen wird
 window.onload = loadPersonalInfo;
