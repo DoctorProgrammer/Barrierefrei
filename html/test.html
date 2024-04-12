@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Persönliche Informationen</title>
+  <title>Testformular</title>
 </head>
 <body>
-<h2>Persönliche Informationen</h2>
-<form id="personalInfoForm" action="output.html" method="post">
+<h2>Testformular</h2>
+<form id="testForm" action="#" method="post">
   <label for="firstName">Vorname:</label>
   <input type="text" id="firstName" name="firstName" required><br><br>
   <label for="lastName">Nachname:</label>
@@ -15,6 +15,9 @@
   <button type="submit">Absenden</button>
 </form>
 
+<!-- JavaScript zum Speichern und Laden der Daten -->
 <script src="../scripts/savePersonalInfo.js"></script>
+<script src="../scripts/loadPersonalInfo.js"></script>
+<script src="../scripts/insertSavedDataIntoForms.js"></script> <!-- Funktion zum Einfügen der gespeicherten Daten -->
 </body>
 </html>
