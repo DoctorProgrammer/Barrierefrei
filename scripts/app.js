@@ -113,4 +113,15 @@ document.addEventListener('DOMContentLoaded', function() {
             field.value = response;
         }
     });
+
+    // Schritt 3
+    // store the values in a json file
+    // make last input active
+    let lastField = formFields[formFields.length - 1];
+    lastField.focus();
+
+    let form = document.querySelector('form');
+    form.addEventListener('submit', function(event) {
+        
+    });
 });
