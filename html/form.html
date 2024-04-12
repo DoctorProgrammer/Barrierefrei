@@ -3,18 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Persönliche Informationen</title>
+  <script src="../scripts/app.js"></script>
+  <script src="../scripts/textToSpeech.js"></script>
+  <title>FormFiller | Persönliche Informationen</title>
 </head>
 <body>
-<h2>Persönliche Informationen</h2>
-<form id="personalInfoForm" action="output.html" method="post">
-  <label for="firstName">Vorname:</label>
-  <input type="text" id="firstName" name="firstName" required><br><br>
-  <label for="lastName">Nachname:</label>
-  <input type="text" id="lastName" name="lastName" required><br><br>
-  <button type="submit">Absenden</button>
-</form>
+  <header>
+    <h1 id="title">FormFiller Erweiterung</h1>
+    <p1 id="info">Geben Sie persönliche Informationen an, damit diese automatisch ausgefüllt werden können.</p1>
+  </header>
 
-<script src="../scripts/savePersonalInfo.js"></script>
+  <main>
+    <form action="" id="personalInfoForm">
+      <label for="prename">Vorname</label>
+      <input type="text" id="prename" name="prename" required>
+      <label for="name">Nachname</label>
+      <input type="text" id="name" name="name" required>
+      <label for="email">E-Mail</label>
+      <input type="email" id="email" name="email" required>
+    </form>
+  </main>
+
+  <footer>
+
+  </footer>
 </body>
 </html>

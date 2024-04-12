@@ -1,6 +1,4 @@
-// Eine Funktion zum Laden der gespeicherten persönlichen Informationen aus localStorage
 function loadPersonalInfo() {
-    // Überprüfen, ob der Browser localStorage unterstützt
     if (typeof(Storage) !== "undefined") {
         // Die gespeicherten Daten aus localStorage abrufen
         var personalInfoJSON = localStorage.getItem("personalInfo");
@@ -21,6 +19,3 @@ function loadPersonalInfo() {
         console.error('Ihr Browser unterstützt kein localStorage.');
     }
 }
-
-// Die Funktion zum Laden der gespeicherten Daten aufrufen, wenn die Seite geladen wird
-window.onload = loadPersonalInfo;
