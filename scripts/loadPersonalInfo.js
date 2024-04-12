@@ -1,4 +1,4 @@
-// Eine Funktion zum Laden der gespeicherten persönlichen Informationen aus localStorage
+// Funktion zum Laden der gespeicherten persönlichen Informationen aus localStorage
 function loadPersonalInfo() {
     // Überprüfen, ob der Browser localStorage unterstützt
     if (typeof(Storage) !== "undefined") {
@@ -12,8 +12,10 @@ function loadPersonalInfo() {
 
             // Die Daten in das html-Dokument einfügen
             var outputDiv = document.getElementById("output");
+            outputDiv.innerHTML = ""; // Leeren Sie das Ausgabe-Div zuerst
             outputDiv.innerHTML = "<p>Vorname: " + personalInfo.firstName + "</p>" +
-                "<p>Nachname: " + personalInfo.lastName + "</p>";
+                "<p>Nachname: " + personalInfo.lastName + "</p>"+
+                "<p>Email: " + personalInfo.email + "</p>"; // Stellen Sie sicher, dass email korrekt abgerufen wird
         } else {
             console.error('Keine gespeicherten Daten gefunden.');
         }
@@ -21,6 +23,7 @@ function loadPersonalInfo() {
         console.error('Ihr Browser unterstützt kein localStorage.');
     }
 }
+
 
 // Die Funktion zum Laden der gespeicherten Daten aufrufen, wenn die Seite geladen wird
 window.onload = loadPersonalInfo;
