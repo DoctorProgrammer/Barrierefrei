@@ -1,4 +1,7 @@
 async function getAudio(text) {
-    let textToSpeak = new SpeechSynthesisUtterance(text);
-    window.speechSynthesis.speak(textToSpeak);
+    return new Promise((resolve) => {
+        let textToSpeak = new SpeechSynthesisUtterance(text);
+        textToSpeak.onend = resolve;
+        window.speechSynthesis.speak(textToSpeak);
+    });
 }

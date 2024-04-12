@@ -1,36 +1,3 @@
-const savePersonalInfo = require('savePersonalInfo');
-const loadPersonalInfo = require('loadPersonalInfo');
-
-// Eine Funktion zur Anzeige der geladenen persönlichen Informationen
-function displayPersonalInfo(personalInfo) {
-    // Die Daten in das HTML-Dokument einfügen
-    var outputDiv = document.getElementById("output");
-    outputDiv.innerHTML = "<p>Vorname: " + personalInfo.firstName + "</p>" +
-        "<p>Nachname: " + personalInfo.lastName + "</p>";
-}
-
-// Eine Funktion zum Hinzufügen eines Event-Listeners für das Formular
-function addFormSubmitListener() {
-    document.getElementById("personalInfoForm").addEventListener("submit", function(event) {
-        event.preventDefault(); // Standardformularverhalten verhindern
-
-        // Die eingegebenen Daten abrufen
-        var firstName = document.getElementById("firstName").value;
-        var lastName = document.getElementById("lastName").value;
-
-        // Die Funktion zum Speichern der Daten aufrufen
-        savePersonalInfo(firstName, lastName);
-
-        // Zur nächsten Seite weiterleiten
-        window.location.href = "../html/output.html";
-    });
-}
-
-// Die Funktionen aufrufen, wenn die Seite geladen wird
-window.onload = function() {
-    loadPersonalInfo(displayPersonalInfo); // Lade die gespeicherten Daten und rufe dann displayPersonalInfo auf
-    addFormSubmitListener();
-};
 document.addEventListener('DOMContentLoaded', function() {
     /*
     Schritt 1: Es wird gesagt, was zu tun ist
@@ -139,10 +106,11 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         textToSpeech += "Der Input-Typ ist " + type + ".";
 
-        getAudio(textToSpeech).then(() => {
-            // get response
-            let response = getTextFromVoice();
+        await getAudio(textToSpeech);
+
+        response = getTextFromVoice();
+        if (response) {
             field.value = response;
-        });
+        }
     });
 });
